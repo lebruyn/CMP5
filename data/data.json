@@ -1,0 +1,14 @@
+{
+    "toiletten": [
+        {
+            "naam": "",
+            "straat": "",
+            "nummer": "",
+            "prijs": "",
+            "openingsuren": "",
+            "urinoir": "",
+            "babytafel": "",
+            "toegankelijkheid": ""
+        }
+    ]
+}
