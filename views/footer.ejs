@@ -1,5 +1,15 @@
-        <footer>
-            <p>Copyright &copy; 2019</p>
-        </footer>
-    </body>
+<footer>
+    <p>Copyright &copy; 2019</p>
+</footer>
+
+
+<script>
+    var map = L.map('mapid').setView([51.218729, 4.406164], 15);
+    var Hydda_Full = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+</script>
+</body>
 </html>
