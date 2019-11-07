@@ -14,8 +14,8 @@
     map.locate({setView: true, maxZoom: 16});
     // Marker plaatsen op mijn locatie
     function onLocationFound(e) {
-	var radius = e.accuracy;
-    L.marker(e.latlng).addTo(map);
+        var radius = e.accuracy;
+        L.marker(e.latlng).addTo(map);
     }
     map.on('locationfound', onLocationFound);
 
@@ -29,15 +29,24 @@
 
 
         //Popups met nodige info.
-
+        var omschrijving = toiletArray[i].OMSCHRIJVING;
+        var type = toiletArray[i].TYPE;
+        var betalend = toiletArray[i].BETALEND;
+        var straat = toiletArray[i].STRAAT;
+        var nummer = toiletArray[i].HUISNUMMER;
+        var postcode = toiletArray[i].POSTCODE;
+        var district = toiletArray[i].DISTRICT;
+        var doelgroep = toiletArray[i].DOELGROEP;
+        var handicap = toiletArray[i].INTEGRAAL_TOEGANKELIJK;
+        var luiertafel = toiletArray[i].LUIERTAFEL;
         %>
 
-    L.marker([<%=y%>, <%=x%>]).addTo(map);
+    L.marker([<%=y%>, <%=x%>]).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
 
-                                <% 
-                                };
-                                %>
-    
+    <% 
+    };
+    %>
+
 </script>
 </body>
 </html>
