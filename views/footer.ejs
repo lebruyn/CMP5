@@ -10,6 +10,25 @@
         attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+
+    <%
+    var length = toiletArray.length;
+    for(var i=0; i<length; i++ ) {
+
+        //Markers op de juiste locatie.
+        var x = parseFloat(toiletArray[i].X);
+        var y = parseFloat(toiletArray[i].Y);
+
+
+        //Popups met nodige info.
+
+        %>
+
+    L.marker([<%=y%>, <%=x%>]).addTo(map);
+
+                                <% 
+                                };
+                                %>
 </script>
 </body>
 </html>
