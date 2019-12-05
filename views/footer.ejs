@@ -8,6 +8,9 @@
     var Hydda_Full = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
         maxZoom: 18
     }).addTo(map);
+    
+    // Costum marker
+    var sIcon = L.icon({iconUrl: '/icons/kakskes-03.png'});
 
     // Mijn locatie opvragen
     map.locate({setView: true, maxZoom: 16});
@@ -25,7 +28,7 @@
         //Markers op de juiste locatie.
         var x = parseFloat(toiletArray[i].X);
         var y = parseFloat(toiletArray[i].Y);
-
+        
 
         //Popups met nodige info.
         var omschrijving = toiletArray[i].OMSCHRIJVING;
@@ -39,10 +42,10 @@
         var handicap = toiletArray[i].INTEGRAAL_TOEGANKELIJK;
         var luiertafel = toiletArray[i].LUIERTAFEL;
         %>
-
-
+        
+            
     //Markers op de kaart zetten.
-    L.marker([<%=y%>, <%=x%>]).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
+    L.marker([<%=y%>, <%=x%>], {icon: sIcon}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p><p>Betalend: <%=betalend%></p><p>Integraal toegankelijk: <%=handicap%></p><p>Luiertafel: <%=luiertafel%></p></div>");
 
                                                     <% 
                                                     };
