@@ -7,7 +7,7 @@
     var Hydda_Full = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
         maxZoom: 18
     }).addTo(map);
-    
+
     //Layergroep opmaken (nodig voor het clearen)
     var markers = L.layerGroup();
 
@@ -19,8 +19,18 @@
             popupAnchor:  [-3, -20]
         }
     });
+    
+    var GebruikerIcon = L.Icon.extend({
+        options: {
+            iconSize:     [50],
+            iconAnchor:   [20, 40],
+            popupAnchor:  [-3, -20]
+        }
+    });
+    
     var TIcon = new ToiletIcon({iconUrl: '/icons/toilet-marker.png'}),
-        UIcon = new ToiletIcon({iconUrl: '/icons/urinoir-marker.png'});
+        UIcon = new ToiletIcon({iconUrl: '/icons/urinoir-marker.png'}),
+        OIcon = new GebruikerIcon({iconUrl: '/icons/gebruiker-marker-alt.png'});
 
 
     // Mijn locatie opvragen
@@ -28,7 +38,7 @@
     // Marker plaatsen op mijn locatie
     function onLocationFound(e) {
         var radius = e.accuracy;
-        L.marker(e.latlng).addTo(map);
+        L.marker(e.latlng, {icon: OIcon}).addTo(map);
     }
     map.on('locationfound', onLocationFound);
 
@@ -67,27 +77,42 @@
         var luiertafel = toiletArray[i].LUIERTAFEL;
         
         
+        var luierimg;
+        var handimg;
+        
+        if (luiertafel === "ja") {
+            luierimg = "/icons/baby.png";
+        } else {
+            luierimg = "";
+        };
+        
+        if (handicap === "ja") {
+            handimg = "/icons/rolstoel.png";
+        } else {
+            handimg = "";
+        };
+
         %>
-        
-        
 
-        //Properties aan marker geven.
-        var marker = L.marker([<%=y%>, <%=x%>],{icon:<%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
-        
-        //Marker aan LayerGroup Toevoegen.
-        markers.addLayer(marker);
 
-                               <%
-                               };
-                               %>
-    //Markers op de kaart zetten.
-    markers.addTo(map);
-                               
-function FilterChange(x) {
-        markers.clearLayers();
-        <% include filterfunction %>
-        markers.addTo(map);
-    };
+
+    //Properties aan marker geven.
+    var marker = L.marker([<%=y%>, <%=x%>],{icon:<%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p><p>Betalend: <span><%=betalend%></span></p><img src='<%=luierimg%>' class='image'><img src='<%=handimg%>' class='image'></div>");
+
+                                            //Marker aan LayerGroup Toevoegen.
+                                            markers.addLayer(marker);
+
+                                            <%
+                                            };
+                                            %>
+                                            //Markers op de kaart zetten.
+                                            markers.addTo(map);
+
+                                            function FilterChange(x) {
+                                            markers.clearLayers();
+                                            <% include filterfunction %>
+                                            markers.addTo(map);
+                                           };
 
 </script>
 </body>
