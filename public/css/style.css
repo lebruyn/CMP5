@@ -98,6 +98,10 @@ nav a:nth-child(3) {
   cursor: pointer;
 }
 
+#filters{
+  margin: 20px;
+}
+
 #mapid {
     height: 85vh;
     z-index: 1;
