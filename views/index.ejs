@@ -2,14 +2,26 @@
 <main id="main">
 <div id="sidebar">
     <form id="filters">
-        <input type="checkbox" name="urinoir" value="Urinoir">Urinoir 
-        <br><br>
-        <input type="checkbox" name="gratis" value="Gratis">Enkel gratis 
-        <br><br>
-        <input type="checkbox" name="luiertafel" value="Luiertafel">Luiertafel 
-        <br><br>
-        <input type="checkbox" name="integraalToegankelijk" value="Integraal toegankelijk">Toegankelijk
-        <br><br>
+        <label class="container">Urinoir
+          <input type="checkbox" name="urinoir" value="Urinoir">
+          <span class="checkmark"></span>
+        </label> 
+        <br>
+        <label class="container">Enkel gratis
+          <input type="checkbox" name="gratis" value="Gratis">
+          <span class="checkmark"></span>
+        </label> 
+        <br>
+        <label class="container">Luiertafel
+          <input type="checkbox" name="luiertafel" value="Luiertafel">
+          <span class="checkmark"></span>
+        </label> 
+        <br>
+        <label class="container">Toegankelijk
+          <input type="checkbox" name="integraalToegankelijk" value="Integraal toegankelijk">
+          <span class="checkmark"></span>
+        </label>
+        <br>
           <div class="slidecontainer">
               <input type="range" min="1" max="20" value="" class="slider" id="myRange">
               <p> Max. wandelafstand <span id="demo"></span> km</p>

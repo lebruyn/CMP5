@@ -15,13 +15,13 @@
     
     function Sidebar() {
         if (sidebarOpen == false) {
-        document.getElementById('main').style.gridTemplateColumns = '1fr 1fr';
+        document.getElementById('main').style.gridTemplateRows = '1fr 4fr';
         document.getElementById('hamburger').style.backgroundImage = 'url(../icons/cross.png)';
         sidebarOpen = true;
             document.getElementById('filters').style.display = "block";
         }
         else {
-        document.getElementById('main').style.gridTemplateColumns = '0fr 1fr';
+        document.getElementById('main').style.gridTemplateRows = '0fr 4fr';
         document.getElementById('hamburger').style.backgroundImage = 'url(../icons/Hamburger_icon.svg.png)';
         sidebarOpen = false;
             document.getElementById('filters').style.display = "none";
