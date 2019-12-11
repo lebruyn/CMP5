@@ -75,9 +75,16 @@ function FilterCheck() {
     else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == false) {
         FilterChange(10);
     }
-    else {
-        //Geen enkele marker gevonden
+    //Extra opties (urinoirs met luiertafels)
+    else if (document.getElementById("gratis").checked == false && document.getElementById("urinoir").checked == true && document.getElementById("luiertafel").checked == true && document.getElementById("integraal").checked == false)  {
         FilterChange(11);
+    }
+    else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == true && document.getElementById("luiertafel").checked == true && document.getElementById("integraal").checked == false)  {
+        FilterChange(12);
+    }
+    //Geen enkele marker gevonden
+    else {
+        FilterChange(13);
     }
 }
 

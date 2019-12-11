@@ -77,7 +77,7 @@ else if (x == 2) {
             var handicap = toiletArray[i].INTEGRAAL_TOEGANKELIJK;
             var luiertafel = toiletArray[i].LUIERTAFEL;
         
-            if (toiletArray[i].LUIERTAFEL == "ja"){
+            if (toiletArray[i].LUIERTAFEL == "ja" && toiletArray[i].TYPE == "toilet"){
             %>
             //Properties aan marker geven.
             var marker = L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
@@ -300,7 +300,7 @@ else if (x == 7) {
             var handicap = toiletArray[i].INTEGRAAL_TOEGANKELIJK;
             var luiertafel = toiletArray[i].LUIERTAFEL;
         
-            if (toiletArray[i].BETALEND == "nee" && toiletArray[i].LUIERTAFEL == "ja"){
+            if (toiletArray[i].BETALEND == "nee" && toiletArray[i].LUIERTAFEL == "ja" && toiletArray[i].TYPE == "toilet"){
             %>
             var marker = L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
             markers.addLayer(marker);
@@ -433,6 +433,94 @@ else if (x == 10) {
             var luiertafel = toiletArray[i].LUIERTAFEL;
         
             if (toiletArray[i].BETALEND == "nee" && toiletArray[i].TYPE == "toilet"){
+            %>
+            var marker = L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
+            markers.addLayer(marker);
+        <%
+            };
+        };
+        %>
+}
+else if (x == 11) {
+        <%
+            var length = toiletArray.length;
+            for(var i=0; i<length; i++ ) {
+
+            //Markers op de juiste locatie.
+            var x = parseFloat(toiletArray[i].X);
+            var y = parseFloat(toiletArray[i].Y);
+
+
+            //Juiste icoon bij type toilet
+            var type = toiletArray[i].TYPE;
+            var icon;
+
+            switch (type) {
+                case "toilet":
+                    icon = "TIcon";
+                    break;
+                case "urinoir":
+                    icon = "UIcon";
+                    break;
+            };
+
+
+            //Popups met nodige info.
+            var omschrijving = toiletArray[i].OMSCHRIJVING;
+            var betalend = toiletArray[i].BETALEND;
+            var straat = toiletArray[i].STRAAT;
+            var nummer = toiletArray[i].HUISNUMMER;
+            var postcode = toiletArray[i].POSTCODE;
+            var district = toiletArray[i].DISTRICT;
+            var doelgroep = toiletArray[i].DOELGROEP;
+            var handicap = toiletArray[i].INTEGRAAL_TOEGANKELIJK;
+            var luiertafel = toiletArray[i].LUIERTAFEL;
+        
+            if (toiletArray[i].LUIERTAFEL == "ja"){
+            %>
+            var marker = L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
+            markers.addLayer(marker);
+        <%
+            };
+        };
+        %>
+}
+else if (x == 12) {
+        <%
+            var length = toiletArray.length;
+            for(var i=0; i<length; i++ ) {
+
+            //Markers op de juiste locatie.
+            var x = parseFloat(toiletArray[i].X);
+            var y = parseFloat(toiletArray[i].Y);
+
+
+            //Juiste icoon bij type toilet
+            var type = toiletArray[i].TYPE;
+            var icon;
+
+            switch (type) {
+                case "toilet":
+                    icon = "TIcon";
+                    break;
+                case "urinoir":
+                    icon = "UIcon";
+                    break;
+            };
+
+
+            //Popups met nodige info.
+            var omschrijving = toiletArray[i].OMSCHRIJVING;
+            var betalend = toiletArray[i].BETALEND;
+            var straat = toiletArray[i].STRAAT;
+            var nummer = toiletArray[i].HUISNUMMER;
+            var postcode = toiletArray[i].POSTCODE;
+            var district = toiletArray[i].DISTRICT;
+            var doelgroep = toiletArray[i].DOELGROEP;
+            var handicap = toiletArray[i].INTEGRAAL_TOEGANKELIJK;
+            var luiertafel = toiletArray[i].LUIERTAFEL;
+        
+            if (toiletArray[i].BETALEND == "nee" && toiletArray[i].LUIERTAFEL == "ja"){
             %>
             var marker = L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
             markers.addLayer(marker);
