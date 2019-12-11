@@ -7,9 +7,20 @@
     var Hydda_Full = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
         maxZoom: 18
     }).addTo(map);
+    
 
-    // Costum marker
-    var sIcon = L.icon({iconUrl: '/icons/kakskes-03.png'});
+    //Costum iconen.
+    var ToiletIcon = L.Icon.extend({
+        options: {
+            iconSize:     [35],
+            iconAnchor:   [20, 17],
+            popupAnchor:  [-3, -20]
+        }
+    });
+
+    var TIcon = new ToiletIcon({iconUrl: '/icons/toilet-marker.png'}),
+        UIcon = new ToiletIcon({iconUrl: '/icons/urinoir-marker.png'});
+
 
     // Mijn locatie opvragen
     map.locate({setView: true, maxZoom: 16});
@@ -29,9 +40,22 @@
         var y = parseFloat(toiletArray[i].Y);
 
 
+        //Juiste icoon bij type toilet
+        var type = toiletArray[i].TYPE;
+        var icon;
+
+        switch (type) {
+            case "toilet":
+                icon = "TIcon";
+                break;
+            case "urinoir":
+                icon = "UIcon";
+                break;
+        };
+
+
         //Popups met nodige info.
         var omschrijving = toiletArray[i].OMSCHRIJVING;
-        var type = toiletArray[i].TYPE;
         var betalend = toiletArray[i].BETALEND;
         var straat = toiletArray[i].STRAAT;
         var nummer = toiletArray[i].HUISNUMMER;
@@ -44,23 +68,14 @@
 
 
 
-    //custom marker toevoegen
-    var logoicon = L.icon({
-    iconUrl: '/icons/logo marker.png',
-    iconSize:     [35], // size of the icon
-    iconAnchor:   [20, 17], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-    });
-
-
 
     //Markers op de kaart zetten.
-    L.marker([<%=y%>, <%=x%>],{icon: logoicon}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
+    L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
 
 
-                                                    <%
-                                                    };
-                                                    %>
+                               <%
+                               };
+                               %>
 
 </script>
 </body>
