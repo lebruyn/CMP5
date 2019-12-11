@@ -70,8 +70,8 @@ nav a:nth-child(3) {
 }
 
 .image {
-    width: 40px;
-    height: auto;
+    height: 40px;
+    width: auto;
 }
 
 /* Customize the label (the container) */
