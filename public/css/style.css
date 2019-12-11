@@ -189,8 +189,10 @@ nav a:nth-child(3) {
     width: 100%;
 }
 
-footer{
+footer {
     padding-top: 1vh;
     text-align: center;
     font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px;
 }
