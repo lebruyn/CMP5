@@ -3,22 +3,22 @@
 <div id="sidebar">
     <form id="filters">
         <label class="container">Urinoir
-          <input type="checkbox" name="urinoir" value="Urinoir">
+          <input id="urinoir" type="checkbox" name="urinoir" value="Urinoir" checked>
           <span class="checkmark"></span>
         </label> 
         <br>
         <label class="container">Enkel gratis
-          <input type="checkbox" name="gratis" value="Gratis">
+          <input id="gratis" type="checkbox" name="gratis" value="Gratis">
           <span class="checkmark"></span>
         </label> 
         <br>
         <label class="container">Luiertafel
-          <input type="checkbox" name="luiertafel" value="Luiertafel">
+          <input id="luiertafel" type="checkbox" name="luiertafel" value="Luiertafel">
           <span class="checkmark"></span>
         </label> 
         <br>
-        <label class="container">Toegankelijk
-          <input type="checkbox" name="integraalToegankelijk" value="Integraal toegankelijk">
+        <label class="container">Integraal toegankelijk
+          <input id="integraal" type="checkbox" name="integraalToegankelijk" value="Integraal toegankelijk">
           <span class="checkmark"></span>
         </label>
         <br>
@@ -27,7 +27,7 @@
               <p> Max. wandelafstand <span id="demo"></span> km</p>
             </div>
         <br><br>
-        <input type="submit">
+        <input type="button" onclick="FilterCheck()">
     </form> 
 </div>
 <div id="mapid"></div>
@@ -43,6 +43,44 @@ slider.oninput = function() {
   var sliderInput = this.value / 10;
   output.innerHTML =  sliderInput;
 }
+
+function FilterCheck() {
+    if (document.getElementById("gratis").checked == false && document.getElementById("urinoir").checked == true && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == false) {
+        FilterChange(1);
+    }
+    else if (document.getElementById("gratis").checked == false && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == true && document.getElementById("integraal").checked == false)  {
+        FilterChange(2);
+    }
+    else if (document.getElementById("gratis").checked == false && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == true && document.getElementById("integraal").checked == true) {
+        FilterChange(3)
+    }
+    else if (document.getElementById("gratis").checked == false && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == true)  {
+        FilterChange(4);
+    }
+    else if (document.getElementById("gratis").checked == false && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == false) {
+        FilterChange(5);
+    }
+    else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == true && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == false) {
+        FilterChange(6);
+    }
+    else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == true && document.getElementById("integraal").checked == false)  {
+        FilterChange(7);
+    }
+    else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == true && document.getElementById("integraal").checked == true) {
+        FilterChange(8)
+    }
+    else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == (true))  {
+        FilterChange(9);
+    }
+    else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == false) {
+        FilterChange(10);
+    }
+    else {
+        //Geen enkele marker gevonden
+        FilterChange(11);
+    }
+}
+
 </script>
 
 <% include footer %>

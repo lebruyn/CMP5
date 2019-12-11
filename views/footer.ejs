@@ -8,8 +8,10 @@
         maxZoom: 18
     }).addTo(map);
     
+    //Layergroep opmaken (nodig voor het clearen)
+    var markers = L.layerGroup();
 
-    //Costum iconen.
+    //Custom iconen.
     var ToiletIcon = L.Icon.extend({
         options: {
             iconSize:     [35],
@@ -17,7 +19,6 @@
             popupAnchor:  [-3, -20]
         }
     });
-
     var TIcon = new ToiletIcon({iconUrl: '/icons/toilet-marker.png'}),
         UIcon = new ToiletIcon({iconUrl: '/icons/urinoir-marker.png'});
 
@@ -68,13 +69,22 @@
     
     
 
-    //Markers op de kaart zetten.
-    L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
-
+        //Properties aan marker geven.
+        var marker = L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
+        //Marker aan LayerGroup Toevoegen.
+        markers.addLayer(marker);
 
                                <%
                                };
                                %>
+    //Markers op de kaart zetten.
+    markers.addTo(map);
+                               
+function FilterChange(x) {
+        markers.clearLayers();
+        <% include filterfunction %>
+        markers.addTo(map);
+    };
 
 </script>
 </body>
