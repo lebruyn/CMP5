@@ -2,22 +2,22 @@
 <main id="main">
 <div id="sidebar">
     <form id="filters">
-        <label class="container">Urinoir
+        <label class="container" onclick="FilterCheck()">Urinoir
           <input id="urinoir" type="checkbox" name="urinoir" value="Urinoir" checked>
           <span class="checkmark"></span>
         </label> 
         <br>
-        <label class="container">Enkel gratis
+        <label class="container" onclick="FilterCheck()">Enkel gratis
           <input id="gratis" type="checkbox" name="gratis" value="Gratis">
           <span class="checkmark"></span>
         </label> 
         <br>
-        <label class="container">Luiertafel
+        <label class="container" onclick="FilterCheck()">Luiertafel
           <input id="luiertafel" type="checkbox" name="luiertafel" value="Luiertafel">
           <span class="checkmark"></span>
         </label> 
         <br>
-        <label class="container">Integraal toegankelijk
+        <label class="container" onclick="FilterCheck()">Integraal toegankelijk
           <input id="integraal" type="checkbox" name="integraalToegankelijk" value="Integraal toegankelijk">
           <span class="checkmark"></span>
         </label>
@@ -26,8 +26,7 @@
               <input type="range" min="1" max="20" value="" class="slider" id="myRange">
               <p> Max. wandelafstand <span id="demo"></span> km</p>
             </div>
-        <br><br>
-        <input type="button" onclick="FilterCheck()">
+        <br>
     </form> 
 </div>
 <div id="mapid"></div>
@@ -38,7 +37,6 @@ var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;
 var sliderComma = 
-
 slider.oninput = function() {
   var sliderInput = this.value / 10;
   output.innerHTML =  sliderInput;
@@ -52,7 +50,7 @@ function FilterCheck() {
         FilterChange(2);
     }
     else if (document.getElementById("gratis").checked == false && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == true && document.getElementById("integraal").checked == true) {
-        FilterChange(3)
+        FilterChange(3);
     }
     else if (document.getElementById("gratis").checked == false && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == true)  {
         FilterChange(4);
@@ -67,7 +65,7 @@ function FilterCheck() {
         FilterChange(7);
     }
     else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == true && document.getElementById("integraal").checked == true) {
-        FilterChange(8)
+        FilterChange(8);
     }
     else if (document.getElementById("gratis").checked == true && document.getElementById("urinoir").checked == false && document.getElementById("luiertafel").checked == false && document.getElementById("integraal").checked == (true))  {
         FilterChange(9);
@@ -85,8 +83,8 @@ function FilterCheck() {
     //Geen enkele marker gevonden
     else {
         FilterChange(13);
-    }
-}
+    };
+};
 
 </script>
 

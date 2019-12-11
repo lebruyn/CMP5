@@ -66,13 +66,14 @@
         var handicap = toiletArray[i].INTEGRAAL_TOEGANKELIJK;
         var luiertafel = toiletArray[i].LUIERTAFEL;
         
-        var 
+        
         %>
-    
+        
         
 
         //Properties aan marker geven.
-        var marker = L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
+        var marker = L.marker([<%=y%>, <%=x%>],{icon:<%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
+        
         //Marker aan LayerGroup Toevoegen.
         markers.addLayer(marker);
 
