@@ -5,7 +5,7 @@
     <a href="#">
         
     </a>
-    <a href="#">
+    <a href="#" onclick="MyLocation()">
         
     </a>
 </nav>
@@ -26,6 +26,10 @@
         sidebarOpen = false;
             document.getElementById('filters').style.display = "none";
         }
+    };
+    
+    function MyLocation() {
+        map.locate({setView: true, maxZoom: 16});
     };
     
 </script>
