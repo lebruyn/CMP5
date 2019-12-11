@@ -65,9 +65,8 @@
         var handicap = toiletArray[i].INTEGRAAL_TOEGANKELIJK;
         var luiertafel = toiletArray[i].LUIERTAFEL;
         %>
-
-
-
+    
+    
 
     //Markers op de kaart zetten.
     L.marker([<%=y%>, <%=x%>],{icon: <%=icon%>}).addTo(map).bindPopup("<div class='popup'><h1><%=omschrijving%></h1><p><%=straat%>&nbsp;<%=nummer%></p><p><%=postcode%>&nbsp;<%=district%></p></div>");
